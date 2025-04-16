@@ -37,10 +37,10 @@ export default function Home({ loaderData }: any) {
       <Navbar />
       <HeroSection />
       <AboutSection />
-      <StatsSection total={loaderData.total} initialValues={loaderData.initialValues} />
       <EvaluationSection />
       <KeyPointsSection />
       <BenefitsSection />
+      <StatsSection total={loaderData.total} initialValues={loaderData.initialValues} />
       <Footer />
     </main>
   );

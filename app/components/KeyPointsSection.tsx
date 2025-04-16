@@ -1,6 +1,6 @@
 const KeyPointsSection = () => {
   return (
-    <section className="light-bg-section py-16">
+    <section id="features-key-points" className="light-bg-section py-16">
       <div className="container mx-auto px-4">
         <h3 className="text-2xl font-semibold mb-8 text-center flex items-center justify-center">
           <img

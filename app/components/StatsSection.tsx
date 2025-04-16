@@ -78,7 +78,46 @@ function StatsSection({ total, initialValues }: StatsSectionProps) {
         <h2 className="text-3xl md:text-4xl font-bold mb-2 text-center">
           Análisis de <span className="text-primary">Producción Académica</span>
         </h2>
-        <hr className="border-primary border-2 rounded-full w-16 mx-auto mb-12" />
+        <hr className="border-primary border-2 rounded-full w-16 mx-auto mb-6" />
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <h3 className="text-xl font-semibold text-primary mb-4">Fórmula para calcular el índice de producción académica</h3>
+            <div className="flex justify-center items-center p-4">
+              <div className="flex items-center justify-center">
+                <div className="text-xl font-mono text-gray-800">
+                  <div className="flex items-center">
+                    <span className="flex items-center" style={{ height: "48px" }}>IP =</span>
+                    <div className="inline-block mx-2">
+                      <div className="border-b border-gray-800 pb-1">
+                        PAC + PA + LyCL + PIA
+                      </div>
+                      <div className="pt-1 text-center">
+                        PTC + 0.5 × PMT
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 text-center">
+              <p className="font-semibold text-primary border-b-2 border-primary inline-block pb-1">El valor de IP debe ser igual o mayor a 1.5 para poder estar óptimo a la evaluación de acreditación</p>
+            </div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+            <h3 className="text-xl font-semibold text-primary mb-4">Indicadores de la fórmula</h3>
+            <div className="grid grid-cols-1 gap-2 text-sm text-gray-700">
+              <div><span className="font-semibold">IP:</span> Índice de Producción Académica</div>
+              <div><span className="font-semibold">PAC:</span> Publicación académica científica</div>
+              <div><span className="font-semibold">PA:</span> Producción artística</div>
+              <div><span className="font-semibold">LyCL:</span> Libros y capítulos de libros</div>
+              <div><span className="font-semibold">PIA:</span> Propiedad intelectual aplicada</div>
+              <div><span className="font-semibold">PTC:</span> Profesores a tiempo completo</div>
+              <div><span className="font-semibold">PMT:</span> Profesores a medio tiempo</div>
+            </div>
+          </div>
+        </div>
 
         <div className="mb-12">
           <div className="flex flex-col items-center gap-4 mb-8">
@@ -141,39 +180,60 @@ function StatsSection({ total, initialValues }: StatsSectionProps) {
         
 
           {calculatedTotal ? (
-              <><div style={{
-                display: "flex"
-            ,
+              <>
+              <div style={{
+                display: "flex",
                 justifyContent: "center",
-            }} >
-              <ResponsiveContainer width="50%" height={300}>
-              <BarChart data={graphic}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar barSize={40} dataKey="indicador" fill="#0b1d49" />
-              </BarChart>
-            </ResponsiveContainer></div>
-            <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-sm border border-primary/20">
-               
-                <div className="text-4xl font-bold text-center text-primary">
-                IP:  {Number(Datatoshow[0].indicador).toFixed(2)}
+              }}>
+                <ResponsiveContainer width="50%" height={300}>
+                  <BarChart data={graphic}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar barSize={40} dataKey="indicador" fill="#0b1d49" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-4xl mx-auto mt-8">
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h4 className="text-lg font-semibold text-primary mb-2 text-center">IP</h4>
+                  <div className="text-3xl font-bold text-center text-primary">
+                    {Number(Datatoshow[0].indicador).toFixed(2)}
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-center text-primary">
-                  PAC: {Number(Datatoshow[1].indicador).toFixed(2)}
+                
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h4 className="text-lg font-semibold text-primary mb-2 text-center">PAC</h4>
+                  <div className="text-3xl font-bold text-center text-primary">
+                    {Number(Datatoshow[1].indicador).toFixed(2)}
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-center text-primary">
-                  LyCl: {Number(Datatoshow[2].indicador).toFixed(2)}
+                
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h4 className="text-lg font-semibold text-primary mb-2 text-center">LyCl</h4>
+                  <div className="text-3xl font-bold text-center text-primary">
+                    {Number(Datatoshow[2].indicador).toFixed(2)}
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-center text-primary">
-                  PA: {Number(Datatoshow[3].indicador).toFixed(2)}
+                
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h4 className="text-lg font-semibold text-primary mb-2 text-center">PA</h4>
+                  <div className="text-3xl font-bold text-center text-primary">
+                    {Number(Datatoshow[3].indicador).toFixed(2)}
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-center text-primary">
-                  PIA: {Number(Datatoshow[4].indicador).toFixed(2)}
+                
+                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h4 className="text-lg font-semibold text-primary mb-2 text-center">PIA</h4>
+                  <div className="text-3xl font-bold text-center text-primary">
+                    {Number(Datatoshow[4].indicador).toFixed(2)}
+                  </div>
                 </div>
-              </div></>
+              </div>
+              </>
           ) : (
             <Suspense fallback={<div className="text-center">Calculando índice...</div>}>
               <Await resolve={total} children={(value: any) => {
@@ -185,99 +245,63 @@ function StatsSection({ total, initialValues }: StatsSectionProps) {
                 return  (
                   <>
                   <div style={{
-    display: "flex"
-,
-    justifyContent: "center",
-}} >
-                  <ResponsiveContainer width="50%" height={300}>
-                    <BarChart data={data}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                      <Legend />
-                      <Bar barSize={40} dataKey="indicador" fill="#0b1d49" />
-                    </BarChart>
-                  </ResponsiveContainer></div>
+                    display: "flex",
+                    justifyContent: "center",
+                  }}>
+                    <ResponsiveContainer width="50%" height={300}>
+                      <BarChart data={data}>
+                        <CartesianGrid strokeDasharray="3 3" />
+                        <XAxis dataKey="name" />
+                        <YAxis />
+                        <Tooltip />
+                        <Legend />
+                        <Bar barSize={40} dataKey="indicador" fill="#0b1d49" />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
 
-                    <div className="max-w-sm mx-auto bg-white p-6 rounded-lg shadow-sm border border-primary/20">
-                      
-                      <div className="text-4xl font-bold text-center text-primary">
-                   IP: {Number (aux [0]).toFixed (2)}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-4xl mx-auto mt-8">
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                      <h4 className="text-lg font-semibold text-primary mb-2 text-center">IP</h4>
+                      <div className="text-3xl font-bold text-center text-primary">
+                        {Number(aux[0]).toFixed(2)}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                      <h4 className="text-lg font-semibold text-primary mb-2 text-center">PAC</h4>
+                      <div className="text-3xl font-bold text-center text-primary">
+                        {Number(aux[1]).toFixed(2)}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                      <h4 className="text-lg font-semibold text-primary mb-2 text-center">LyCl</h4>
+                      <div className="text-3xl font-bold text-center text-primary">
+                        {Number(aux[2]).toFixed(2)}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                      <h4 className="text-lg font-semibold text-primary mb-2 text-center">PA</h4>
+                      <div className="text-3xl font-bold text-center text-primary">
+                        {Number(aux[3]).toFixed(2)}
+                      </div>
+                    </div>
+                    
+                    <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                      <h4 className="text-lg font-semibold text-primary mb-2 text-center">PIA</h4>
+                      <div className="text-3xl font-bold text-center text-primary">
+                        {Number(aux[4]).toFixed(2)}
+                      </div>
+                    </div>
                   </div>
-                  <div className="text-4xl font-bold text-center text-primary">
-                    PAC: {Number (aux [1]).toFixed (2)}
-                  </div>
-                  <div className="text-4xl font-bold text-center text-primary">
-                  LyCl: {Number (aux [2]).toFixed (2)}
-                  </div>
-                  <div className="text-4xl font-bold text-center text-primary">
-                  PA: {Number (aux [3]).toFixed (2)}
-                  </div>
-                  <div className="text-4xl font-bold text-center text-primary">
-                  PIA: {Number (aux [4]).toFixed (2)}
-                  </div>
-                    </div></>)
-              }
-              }>
-
+                  </>
+                )
+              }}>
               </Await>
             </Suspense>
           )}
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="stats-card">
-            <img
-              src="https://ext.same-assets.com/3486587280/3783633550.svg"
-              alt="Publicaciones icon"
-              className="w-12 h-12 mb-4 text-primary"
-            />
-            <h3 className="text-3xl font-bold text-primary mb-1">450+</h3>
-            <h4 className="font-semibold text-primary mb-2">Publicaciones</h4>
-            <p className="text-sm text-gray-600 text-center">
-              Artículos científicos indexados
-            </p>
-          </div>
-
-          <div className="stats-card">
-            <img
-              src="https://ext.same-assets.com/3486587280/2563901416.svg"
-              alt="Proyectos icon"
-              className="w-12 h-12 mb-4"
-            />
-            <h3 className="text-3xl font-bold text-primary mb-1">120</h3>
-            <h4 className="font-semibold text-primary mb-2">Proyectos</h4>
-            <p className="text-sm text-gray-600 text-center">
-              Proyectos de investigación activos
-            </p>
-          </div>
-
-          <div className="stats-card">
-            <img
-              src="https://ext.same-assets.com/3486587280/548389142.svg"
-              alt="Reconocimientos icon"
-              className="w-12 h-12 mb-4"
-            />
-            <h3 className="text-3xl font-bold text-primary mb-1">38</h3>
-            <h4 className="font-semibold text-primary mb-2">Reconocimientos</h4>
-            <p className="text-sm text-gray-600 text-center">
-              Premios nacionales e internacionales
-            </p>
-          </div>
-
-          <div className="stats-card">
-            <img
-              src="https://ext.same-assets.com/3486587280/260646423.svg"
-              alt="Investigadores icon"
-              className="w-12 h-12 mb-4"
-            />
-            <h3 className="text-3xl font-bold text-primary mb-1">250</h3>
-            <h4 className="font-semibold text-primary mb-2">Investigadores</h4>
-            <p className="text-sm text-gray-600 text-center">
-              Docentes investigadores certificados
-            </p>
-          </div>
         </div>
       </div>
     </section>

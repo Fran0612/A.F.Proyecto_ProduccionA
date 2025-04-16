@@ -4,7 +4,7 @@ const BenefitsSection = () => {
   const [activeTab, setActiveTab] = useState<'beneficios' | 'desafios'>('beneficios');
 
   return (
-    <section className="py-16">
+    <section id="features-benefits" className="py-16">
       <div className="container mx-auto px-4">
         <div className="flex justify-center mb-6">
           <div className="inline-flex rounded-md shadow-sm">
